@@ -30,7 +30,7 @@
             <!-- card body -->
             <div class="p-6 w-full sm:p-8 lg:p-8">
                 <div class="mb-4">
-                    <a href="{{ route('home') }}" class="flex flex-col text-center mb-4">
+                    <a href="{{ route('dashboard') }}" class="flex flex-col text-center mb-4">
                         <span class="text-xl font-semibold">Pemantauan Kegiatan
                             Siswa</span>
                         <span>PAUD INSAN MUDA MULIA</span>
@@ -38,13 +38,14 @@
                     <p class="mb-4">Silakan masukkan informasi pengguna.</p>
                 </div>
                 <!-- form -->
-                <form>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                     <!-- username -->
                     <div class="mb-3">
-                        <label for="email" class="inline-block mb-2">Nama pengguna atau email</label>
-                        <input type="email" id="email"
+                        <label for="login" class="inline-block mb-2">Nama pengguna atau email</label>
+                        <input type="text" id="login"
                             class="border border-gray-300 text-gray-900 rounded focus:ring-indigo-600 focus:border-indigo-600 block w-full p-2 px-3 disabled:opacity-50 disabled:pointer-events-none"
-                            name="email" placeholder="Email address here" required="" />
+                            name="login" placeholder="Nama pengguna atau email" required="" />
                     </div>
                     <!-- password -->
                     <div class="mb-5">
@@ -81,6 +82,15 @@
                                     password?</a>
                             </div>
                         </div> --}}
+                        @if ($errors->any())
+                            <div>
+                                <ul class="text-red-800 mx-auto mt-3">
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     </div>
                 </form>
             </div>
