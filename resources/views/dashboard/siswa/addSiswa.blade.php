@@ -31,7 +31,7 @@
                 <div class="relative overflow-x-auto">
                     <!-- Form Input  -->
                     <div class="card-body">
-                        <form action="{{-- {{ route('siswa.store') }} --}}" method="POST">
+                        <form action="{{ route('storeSiswa') }}" method="POST">
                             @csrf
                             <div class="grid grid-cols-6 gap-6">
                                 <div class="col-span-6 sm:col-span-3">
@@ -54,36 +54,65 @@
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
                                     <label for="kelas" class="block text-sm font-medium text-gray-700">Kelas</label>
-                                    <input type="text" name="kelas" id="kelas" autocomplete="off"
-                                        value="{{ old('kelas') ?? '' }}"
+                                    <select name="kelas" id="kelas"
                                         class="py-1 px-3 block w-full text-sm border-gray-300 rounded focus:border-indigo-600 focus:ring-indigo-600 disabled:opacity-50 disabled:pointer-events-none">
+                                        <option value="" @if (old('kelas') == '') selected @endif>Pilih Kelas
+                                        </option>
+                                        <option value="A" @if (old('kelas') == 'A') selected @endif>Kelas A
+                                        </option>
+                                        <option value="B" @if (old('kelas') == 'B') selected @endif>Kelas B
+                                        </option>
+                                        <option value="C" @if (old('kelas') == 'C') selected @endif>Kelas C
+                                        </option>
+                                        <option value="D" @if (old('kelas') == 'D') selected @endif>Kelas D
+                                        </option>
+                                    </select>
                                     @error('kelas')
                                         <div class="text-red-500">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="nama_ortu" class="block text-sm font-medium text-gray-700">Nama Orang
-                                        Tua</label>
-                                    <input type="text" name="nama_ortu" id="nama_ortu" autocomplete="off"
-                                        value="{{ old('nama_ortu') ?? '' }}"
+                                    <label for="jenis_kelamin" class="block text-sm font-medium text-gray-700">Jenis
+                                        Kelamin</label>
+                                    <select name="jenis_kelamin" id="jenis_kelamin"
                                         class="py-1 px-3 block w-full text-sm border-gray-300 rounded focus:border-indigo-600 focus:ring-indigo-600 disabled:opacity-50 disabled:pointer-events-none">
-                                    @error('nama_ortu')
+                                        <option value="" @if (old('jenis_kelamin') == '') selected @endif>Pilih Jenis
+                                            Kelamin</option>
+                                        <option value="Laki-Laki" @if (old('jenis_kelamin') == 'Laki-Laki') selected @endif>
+                                            Laki-laki
+                                        </option>
+                                        <option value="Perempuan" @if (old('jenis_kelamin') == 'Perempuan') selected @endif>
+                                            Perempuan
+                                        </option>
+                                    </select>
+                                    @error('jenis_kelamin')
                                         <div class="text-red-500">{{ $message }}</div>
                                     @enderror
                                 </div>
                                 <div class="col-span-6 sm:col-span-3">
-                                    <label for="no_telp" class="block text-sm font-medium text-gray-700">No. Telp</label>
-                                    <input type="text" name="no_telp" id="no_telp" autocomplete="off"
-                                        value="{{ old('no_telp') ?? '' }}"
+                                    <label for="nama_orangtua" class="block text-sm font-medium text-gray-700">Nama Orang
+                                        Tua</label>
+                                    <input type="text" name="nama_orangtua" id="nama_orangtua" autocomplete="off"
+                                        value="{{ old('nama_orangtua') ?? '' }}"
                                         class="py-1 px-3 block w-full text-sm border-gray-300 rounded focus:border-indigo-600 focus:ring-indigo-600 disabled:opacity-50 disabled:pointer-events-none">
-                                    @error('no_telp')
+                                    @error('nama_orangtua')
+                                        <div class="text-red-500">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="no_telepon_orangtua" class="block text-sm font-medium text-gray-700">No.
+                                        Telp</label>
+                                    <input type="text" name="no_telepon_orangtua" id="no_telepon_orangtua"
+                                        autocomplete="off" value="{{ old('no_telepon_orangtua') ?? '' }}"
+                                        class="py-1 px-3 block w-full text-sm border-gray-300 rounded focus:border-indigo-600 focus:ring-indigo-600 disabled:opacity-50 disabled:pointer-events-none">
+                                    @error('no_telepon_orangtua')
                                         <div class="text-red-500">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
                             <div class="mt-4">
                                 <button type="submit"
-                                    class="btn bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300">Submit</button>
+                                    class="w-full btn bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-4 focus:ring-indigo-300">Submit</button>
                             </div>
                         </form>
                     </div>
@@ -100,6 +129,13 @@
                     </div>
                 </div>
                 <div class="card-body">
+                    @if (session()->has('success'))
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 mb-3 rounded relative"
+                            role="alert">
+                            <strong class="font-bold">Success!</strong>
+                            <span class="block sm:inline">{{ session()->get('success') }}</span>
+                        </div>
+                    @endif
                     <p class="text-sm text-gray-600">Halaman ini adalah halaman Tambah Data Siswa dari PAUD Insan Muda
                         Mulia.<br><br> Pada halaman ini, Anda dapat menginputkan data siswa baru seperti NISN, Nama Siswa,
                         Kelas, Nama Orang Tua, dan Nomor Telepon. <br><br>Silakan isi semua informasi yang diperlukan dan

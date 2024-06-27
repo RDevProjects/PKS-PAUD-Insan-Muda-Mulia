@@ -17,6 +17,7 @@
     <!-- Theme CSS -->
     @vite(['resources/css/app.css', 'resources/css/theme.css'])
 
+    @stack('css')
     <link rel="stylesheet" href="{{ asset('dashboard/libs/apexcharts/dist/apexcharts.css') }}">
 
     <title>{{ env('APP_NAME') }}</title>
