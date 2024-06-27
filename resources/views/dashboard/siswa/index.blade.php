@@ -6,9 +6,7 @@
     <div class="bg-indigo-600 px-8 pt-10 lg:pt-14 pb-16 flex justify-between items-center mb-3">
         <!-- title -->
         <i data-feather="users" class="w-10 h-10 mr-2 mb-2 text-white"></i>
-        <h1 class="text-xl text-white">Data Siswa - PAUD Insan Muda
-            Mulia
-        </h1>
+        <h1 class="text-xl text-white">Data Siswa - PAUD Insan Muda Mulia</h1>
     </div>
     <div class="mx-6 my-6 gap-6">
         <div class="lg:col-span-2">
@@ -18,6 +16,13 @@
                     <div>
                         <h4>Daftar Siswa</h4>
                     </div>
+                    {{-- @if (session()->has('success'))
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-3 py-2 mb-3 rounded relative"
+                            role="alert">
+                            <strong class="font-bold">Success!</strong>
+                            <span class="block sm:inline">{{ session()->get('success') }}</span>
+                        </div>
+                    @endif --}}
                     <div>
                         <!-- button -->
                         <div class="leading-4">
@@ -32,7 +37,8 @@
 
                 <div class="relative overflow-x-auto">
                     <!-- table -->
-                    <table class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400"
+                    <table
+                        class="w-full text-sm text-left rtl:text-right text-gray-700 dark:text-gray-400 whitespace-nowrap"
                         id="users-table">
                         <thead class="w-1/2 text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                             <tr>

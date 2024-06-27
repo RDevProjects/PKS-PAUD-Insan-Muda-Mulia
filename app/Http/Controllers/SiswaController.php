@@ -19,9 +19,11 @@ class SiswaController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('action', function($row){
+                    $waMessage = 'https://wa.me/'.$row->no_telepon_orangtua.'?text=Halo,%20'.$row->nama.'%20kami%20dari%20PAUD%20Insan%20Muda%20Mulia';
                     $editUrl = route('editSiswa', $row->id);
                     $deleteUrl = route('deleteSiswa', $row->id);
-                    return '<a href="'.$editUrl.'" class="btn btn-sm gap-x-2 bg-white text-gray-800 border-gray-300 border hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">Edit</a>
+                    return '<a href="'.$waMessage.'" class="btn btn-sm gap-x-2 bg-white text-gray-800 border-gray-300 border hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">Kirim Pesan</a>
+                            <a href="'.$editUrl.'" class="btn btn-sm gap-x-2 bg-white text-gray-800 border-gray-300 border hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">Edit</a>
                             <a href="'.$deleteUrl.'" data-id="'.$row->id.'" class="btn btn-sm gap-x-2 bg-white text-gray-800 border-gray-300 border hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300">Delete</a>';
                 })
                 ->rawColumns(['action'])
@@ -71,5 +73,11 @@ class SiswaController extends Controller
         Siswa::find($id)->update($request->all());
 
         return redirect()->route('siswa')->with('success', 'Data siswa berhasil diubah');
+    }
+
+    public function destroy($id)
+    {
+        Siswa::find($id)->delete();
+        return redirect()->route('siswa')->with('success', 'Data siswa berhasil dihapus');
     }
 }
