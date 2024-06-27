@@ -28,7 +28,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="./layout.html">
+                            <a class="nav-link " href="{{ route('kegiatan') }}">
                                 <i data-feather="activity" class="w-4 h-4 mr-2"></i>
                                 Kegiatan Siswa
                             </a>

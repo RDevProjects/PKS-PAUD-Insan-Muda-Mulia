@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Kegiatan;
 use App\Models\Siswa;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -24,5 +25,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Siswa::factory(20)->create();
+
+        Kegiatan::factory(10)->create();
     }
 }

@@ -5,8 +5,8 @@
 @section('content')
     <div class="bg-indigo-600 px-8 pt-10 lg:pt-14 pb-16 flex justify-between items-center mb-3">
         <!-- title -->
-        <i data-feather="users" class="w-10 h-10 mr-2 mb-2 text-white"></i>
-        <h1 class="text-xl text-white">Data Siswa - PAUD Insan Muda Mulia</h1>
+        <i data-feather="activity" class="w-10 h-10 mr-2 mb-2 text-white"></i>
+        <h1 class="text-xl text-white">Data Kegiatan - PAUD Insan Muda Mulia</h1>
     </div>
     <div class="mx-6 my-6 gap-6">
         <div class="lg:col-span-2">
@@ -14,7 +14,7 @@
                 <div class="border-b border-gray-300 px-5 py-4 flex items-center w-full justify-between">
                     <!-- title -->
                     <div>
-                        <h4>Daftar Siswa</h4>
+                        <h4>Data Kegiatan</h4>
                     </div>
                     {{-- @if (session()->has('success'))
                         <div class="bg-green-100 border border-green-400 text-green-700 px-3 py-2 mb-3 rounded relative"
@@ -26,26 +26,24 @@
                     <div>
                         <!-- button -->
                         <div class="leading-4">
-                            <a href="{{ route('addSiswa') }}"
+                            <a href="{{ route('addKegiatan') }}"
                                 class="btn btn-sm gap-x-2 bg-white text-gray-800 border-gray-300 border hover:text-white hover:bg-gray-700 hover:border-gray-700 active:bg-gray-700 active:border-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-300"
                                 type="button">
-                                Tambah Data Siswa
+                                Tambah Data Kegiatan
                             </a>
                         </div>
                     </div>
                 </div>
                 <div class="relative overflow-x-auto" data-simplebar="">
                     <!-- table -->
-                    <table class="text-left w-full whitespace-nowrap" id="users-table">
+                    <table class="text-left w-full whitespace-nowrap" id="kegiatan-table">
                         <thead class="text-gray-700">
                             <tr>
                                 <th class="px-4 py-2 text-left">No</th>
-                                <th class="px-4 py-2 text-left">NISN</th>
-                                <th class="px-4 py-2 text-left">Nama Siswa</th>
+                                <th class="px-4 py-2 text-left">Nama Kegiatan</th>
+                                <th class="px-4 py-2 text-left">Deskripsi Kegiatan</th>
+                                <th class="px-4 py-2 text-left">Tanggal Kegiatan</th>
                                 <th class="px-4 py-2 text-left">Kelas</th>
-                                <th class="px-4 py-2 text-left">Jenis Kelamin</th>
-                                <th class="px-4 py-2 text-left">Nama Orang Tua</th>
-                                <th class="px-4 py-2 text-left">Nomor Telepon Orang Tua</th>
                                 <th class="px-4 py-2 text-left">Action</th>
                             </tr>
                         </thead>
@@ -61,10 +59,10 @@
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
-            $('#users-table').DataTable({
+            $('#kegiatan-table').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('siswa.data') }}',
+                ajax: '{{ route('kegiatan.data') }}',
                 columns: [{
                         data: 'DT_RowIndex',
                         name: 'DT_RowIndex',
@@ -72,34 +70,31 @@
                         searchable: false
                     },
                     {
-                        data: 'nisn',
-                        name: 'nisn'
+                        data: 'nama_kegiatan',
+                        name: 'nama_kegiatan'
                     },
                     {
-                        data: 'nama',
-                        name: 'nama'
+                        data: 'deskripsi_kegiatan',
+                        name: 'deskripsi_kegiatan',
+                        render: function(data) {
+                            if (data.length > 50) {
+                                return data.substr(0, 50) + '...';
+                            } else {
+                                return data;
+                            }
+                        }
+                    },
+                    {
+                        data: 'tanggal_kegiatan',
+                        name: 'tanggal_kegiatan'
                     },
                     {
                         data: 'kelas',
                         name: 'kelas'
                     },
                     {
-                        data: 'jenis_kelamin',
-                        name: 'jenis_kelamin'
-                    },
-                    {
-                        data: 'nama_orangtua',
-                        name: 'nama_orangtua'
-                    },
-                    {
-                        data: 'no_telepon_orangtua',
-                        name: 'no_telepon_orangtua'
-                    },
-                    {
                         data: 'action',
-                        name: 'action',
-                        orderable: false,
-                        searchable: false
+                        name: 'action'
                     }
                 ]
             });
