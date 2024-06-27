@@ -6,4 +6,5 @@
 <script src="{{ asset('dashboard/libs/simplebar/dist/simplebar.min.js') }}"></script>
 
 <!-- Theme JS -->
-<script src="{{ asset('dashboard/js/theme.min.js') }}"></script>
+{{-- <script src="{{ asset('dashboard/js/theme.min.js') }}"></script> --}}
+<script src="{{ asset('dashboard/js/theme.js') }}"></script>

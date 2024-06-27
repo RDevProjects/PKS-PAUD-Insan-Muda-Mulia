@@ -17,4 +17,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/', function () {
         return view('dashboard.home');
     })->name('dashboard');
+    Route::get('/siswa', function () {
+        return view('dashboard.siswa.index');
+    })->name('siswa');
+    Route::get('/TambahSiswa', function () {
+        return view('dashboard.siswa.addSiswa');
+    })->name('addSiswa');
 });
