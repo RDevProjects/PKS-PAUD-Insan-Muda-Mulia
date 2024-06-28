@@ -47,10 +47,12 @@
                     <h2 class="text-2xl font-bold">Data Siswa</h2>
                     <table class="min-w-full bg-gray-800 text-white">
                         <tr>
+                            <th class="py-2 px-4">NISN</th>
                             <th class="py-2 px-4">Nama</th>
                             <th class="py-2 px-4">Kelas</th>
                         </tr>
                         <tr>
+                            <td class="py-2 px-4">{{ $siswa->nisn }}</td>
                             <td class="py-2 px-4">{{ $siswa->nama }}</td>
                             <td class="py-2 px-4">{{ $siswa->kelas }}</td>
                         </tr>
