@@ -3,8 +3,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description"
-        content="Dash UI - TailwindCSS HTML Admin Template Free and open-source Github, provides developers with everything need to create Web Application & Kick start project" />
+    <meta name="description" content="Pemantauan Kegiatan Siswa - PAUD Insan Muda Mulia" />
     <link rel="shortcut icon" type="image/x-icon" href="./assets/images/favicon/favicon.ico" />
 
     <!-- Libs CSS -->
