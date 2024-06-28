@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\KegiatanController;
+use App\Http\Controllers\PengumumanController;
 
 // Route::get('/', function () {
 //     return view('dashboard.home');
@@ -40,4 +41,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/kegiatan/edit/{id}', [KegiatanController::class, 'edit'])->name('editKegiatan');
     Route::put('/kegiatan/update/{id}', [KegiatanController::class, 'update'])->name('updateKegiatan');
     Route::get('/kegiatan/delete/{id}', [KegiatanController::class, 'destroy'])->name('deleteKegiatan');
+
+    Route::get('/pengumuman', [PengumumanController::class, 'index'])->name('pengumuman');
+    Route::get('/pengumuman/data', [PengumumanController::class, 'getPengumuman'])->name('pengumuman.data');
+    Route::get('/pengumuman/add', [PengumumanController::class, 'create'])->name('addPengumuman');
+    Route::post('/pengumuman/store', [PengumumanController::class, 'store'])->name('storePengumuman');
+    Route::get('/pengumuman/edit/{id}', [PengumumanController::class, 'edit'])->name('editPengumuman');
+    Route::put('/pengumuman/update/{id}', [PengumumanController::class, 'update'])->name('updatePengumuman');
+    Route::get('/pengumuman/delete/{id}', [PengumumanController::class, 'destroy'])->name('deletePengumuman');
 });

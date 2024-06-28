@@ -34,7 +34,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="./docs.html">
+                            <a class="nav-link " href="{{ route('pengumuman') }}">
                                 <i data-feather="bell" class="w-4 h-4 mr-2"></i>
                                 Pengumuman
                             </a>
