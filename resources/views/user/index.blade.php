@@ -44,17 +44,17 @@
             @if (isset($siswa))
                 <!-- Data Siswa -->
                 <div class="mt-6 text-white">
-                    <h2 class="text-2xl font-bold">Data Siswa</h2>
-                    <table class="min-w-full bg-gray-800 text-white">
+                    <h2 class="text-2xl font-bold bg-gray-500 py-2">Data Siswa</h2>
+                    <table class="min-w-full border-collapse border border-slate-500 bg-gray-800 text-white">
                         <tr>
-                            <th class="py-2 px-4">NISN</th>
-                            <th class="py-2 px-4">Nama</th>
-                            <th class="py-2 px-4">Kelas</th>
+                            <th class="py-2 px-4 border border-slate-600 bg-gray-700">NISN</th>
+                            <th class="py-2 px-4 border border-slate-600 bg-gray-700">Nama</th>
+                            <th class="py-2 px-4 border border-slate-600 bg-gray-700">Kelas</th>
                         </tr>
                         <tr>
-                            <td class="py-2 px-4">{{ $siswa->nisn }}</td>
-                            <td class="py-2 px-4">{{ $siswa->nama }}</td>
-                            <td class="py-2 px-4">{{ $siswa->kelas }}</td>
+                            <td class="py-2 px-4 border border-slate-600">{{ $siswa->nisn }}</td>
+                            <td class="py-2 px-4 border border-slate-600">{{ $siswa->nama }}</td>
+                            <td class="py-2 px-4 border border-slate-600">{{ $siswa->kelas }}</td>
                         </tr>
                     </table>
                 </div>
